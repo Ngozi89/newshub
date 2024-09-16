@@ -13,7 +13,7 @@ body {
 }
 
 .red-o {
-    color: red;
+    color: rgb(7, 7, 131);
     font-size: 50px;
 }
 
@@ -58,6 +58,46 @@ body {
     font-size: 50px;
     color: #442E10;
 }
+
+/* Style hero page */
+.btn-red {
+    background-color: var(--red);
+    color: var(--white);
+}
+
+.btn-red:hover {
+    color: var(--dark-gray);
+}
+
+.hero-btn {
+    box-shadow: 1px 9px 26px -4px rgba(0, 0, 0, 0.66);
+    -webkit-box-shadow: 1px 9px 26px -4px rgba(0, 0, 0, 0.66);
+}
+
+.bg-red {
+    background-color: var(--red);
+}
+.custom-border {
+    border: var(--red) 1px solid;
+    border-radius: 20px;
+    box-shadow: 5px 7px 26px -4px rgba(0, 0, 0, 0.66);
+    -webkit-box-shadow: 5px 7px 26px -4px rgba(0, 0, 0, 0.66);
+    -moz-box-shadow: 5px 7px 26px -4px rgba(0, 0, 0, 0.66);
+}
+
+.text-red {
+    color: var(--red);
+}
+
+.text-brown {
+    color: var(--white);
+}
+
+.custom-icon i {
+    font-size: 50px;
+    color: var(--red);
+}
+/* End hero page */
 
 .home-break {
     border-top: 1px solid #D8B646;

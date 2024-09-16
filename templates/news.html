@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block title %} The News | Browse Article {% endblock %}
+{% block content %}
+
+{% if user.is_authenticated %}
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="page-title">Browse Article</h1>
+        </div>
+    </div>
+    <hr class="home-break">
+    <br>
+    <!--  Post Cards -->
+    <div class="row card-deck">
+        {% for post in post_list  %}
+        <div class="col-sm-6 col-md-4 col-lg-3 px-1 d-flex align-items-stretch">
+            <div class="card card-detail post-card mb-3 shadow-sm mx-auto mx-sm-2">
+                {% if "placeholder" in post.featured_image.url %}
+              <img src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg"
+              class="card-img-top" alt="placeholder image">
+              {% else %}
+              <img src=" {{ post.featured_image.url }}" alt="featured image" class="card-img-top">
+                {% endif %}
+                <div class="card-body pb-1">
+                    <!--  checks if post is unpublished -->
+                    {% if post.status == 0 %}
+                    {% comment %}
+                    <h2 class="card-title post-detail-title text-truncate">{{ post.title }}
+                        <span class="draft">Draft</span></h2>
+                    {% else %}
+                    <h2 class="card-title post-detail-title text-truncate">{{ post.title }}
+                    <span class="draft">Published</span></h2>
+                    {% endcomment %}
+                    {% endif %}
+                    <p class="card-text">
+                        <span><i class="far fa-heart "></i></span>
+                       <span><i class="far fa-clock pr-2"></i></span>
+                       <span>Created On: {{ post.created_on }}</span>
+                    </p>
+                    <a href="#" class="stretched-link"
+                        aria-label="post-detail"></a>
+
+                    <!-- Read more ......................................... -->
+                    <div class="post_body">
+                        {{ post.content|safe|truncatewords:"50"|linebreaks }}
+                        <a href="#">Read More</a>
+                    <hr />
+                        <p class="card-test text-muted h6">
+                        {{ post.created_on }}
+                        <i class="far fa-heart"> </i>
+                        {{ post.number_of_likes }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% if forloop.counter|divisibleby:4 %}
+    </div>
+    <div class="row">{% endif %} {% endfor %}</div>
+</div>
+{% include "paginator.html" %}
+{% endif %}
+
+{%endblock%}
