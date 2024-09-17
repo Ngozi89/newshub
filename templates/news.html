@@ -38,13 +38,13 @@
                        <span><i class="far fa-clock pr-2"></i></span>
                        <span>Created On: {{ post.created_on }}</span>
                     </p>
-                    <a href="#" class="stretched-link"
+                    <a href="{% url 'post_detail' post.slug %}" class="stretched-link"
                         aria-label="post-detail"></a>
 
                     <!-- Read more ......................................... -->
                     <div class="post_body">
                         {{ post.content|safe|truncatewords:"50"|linebreaks }}
-                        <a href="#">Read More</a>
+                        <a href="{% url 'post_detail' post.slug %}">Read More</a>
                     <hr />
                         <p class="card-test text-muted h6">
                         {{ post.created_on }}
